@@ -11,10 +11,10 @@ CREATE TABLE "departments" (
      )
 );
 --import the data in the table
---COPY departments(dept_no, dept_name)
---FROM '/Users/quentinmahieu/Desktop/School/Monash/Projects_Monash/9.SQL_challenge/SQL_challenges/data/departments.csv'
---DELIMITER ','
---CSV HEADER;
+COPY departments(dept_no, dept_name)
+FROM '/Users/quentinmahieu/Public/data/departments.csv'
+DELIMITER ','
+CSV HEADER;
 
 DROP TABLE IF EXISTS titles;
 CREATE TABLE "titles" (
@@ -25,10 +25,10 @@ CREATE TABLE "titles" (
      )
 );
 
---COPY titles(title_id, title)
---FROM '/Users/quentinmahieu/Desktop/School/Monash/Projects_Monash/9.SQL_challenge/SQL_challenges/data/titles.csv'
---DELIMITER ','
---CSV HEADER;
+COPY titles(title_id, title)
+FROM '/Users/quentinmahieu/Public/data/titles.csv'
+DELIMITER ','
+CSV HEADER;
 
 DROP TABLE IF EXISTS employees;
 CREATE TABLE "employees" (
@@ -43,11 +43,11 @@ CREATE TABLE "employees" (
         "emp_no"
      )
 );
---COPY employees(emp_no, emp_title_id,
---			   birth_date,first_name,last_name,sex,hire_date)
---FROM '/Users/quentinmahieu/Desktop/School/Monash/Projects_Monash/9.SQL_challenge/SQL_challenges/data/employees.csv'
---DELIMITER ','
---CSV HEADER;
+COPY employees(emp_no, emp_title_id,
+			   birth_date,first_name,last_name,sex,hire_date)
+FROM '/Users/quentinmahieu/Public/data/employees.csv'
+DELIMITER ','
+CSV HEADER;
 
 DROP TABLE IF EXISTS dept_emp;
 CREATE TABLE "dept_emp" (
@@ -57,10 +57,10 @@ CREATE TABLE "dept_emp" (
         "emp_no","dept_no"
      )
 );
---COPY dept_emp(emp_no,dept_no)
---FROM '/Users/quentinmahieu/Desktop/School/Monash/Projects_Monash/9.SQL_challenge/SQL_challenges/data/dept_emp.csv'
---DELIMITER ','
---CSV HEADER;
+COPY dept_emp(emp_no,dept_no)
+FROM '/Users/quentinmahieu/Public/data/dept_emp.csv'
+DELIMITER ','
+CSV HEADER;
 
 DROP TABLE IF EXISTS dept_manager;
 CREATE TABLE "dept_manager" (
@@ -70,10 +70,10 @@ CREATE TABLE "dept_manager" (
         "dept_no","emp_no"
      )
 );
---COPY dept_manager(dept_no,emp_no)
---FROM '/Users/quentinmahieu/Desktop/School/Monash/Projects_Monash/9.SQL_challenge/SQL_challenges/data/dept_manager.csv'
---DELIMITER ','
---CSV HEADER;
+COPY dept_manager(dept_no,emp_no)
+FROM '/Users/quentinmahieu/Public/data/dept_manager.csv'
+DELIMITER ','
+CSV HEADER;
 
 DROP TABLE IF EXISTS salaries;
 CREATE TABLE "salaries" (
@@ -83,13 +83,10 @@ CREATE TABLE "salaries" (
         "emp_no"
      )
 );
---COPY slaries(emp_no,salary)
---FROM '/Users/quentinmahieu/Desktop/School/Monash/Projects_Monash/9.SQL_challenge/SQL_challenges/data/salaries.csv'
---DELIMITER ','
---CSV HEADER;
-
-ALTER TABLE "employees" ADD CONSTRAINT "fk_employees_emp_title_id" FOREIGN KEY("emp_title_id")
-REFERENCES "titles" ("title_id");
+COPY salaries(emp_no,salary)
+FROM '/Users/quentinmahieu/Public/data/salaries.csv'
+DELIMITER ','
+CSV HEADER;
 
 ALTER TABLE "dept_emp" ADD CONSTRAINT "fk_dept_emp_emp_no" FOREIGN KEY("emp_no")
 REFERENCES "employees" ("emp_no");
